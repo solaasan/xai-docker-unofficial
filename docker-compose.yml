@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  xai-docker:
+    ### If you want to diy build uncomment build and comment image out
+    ##build: .
+    image: solaaa/xai-docker-unofficial:latest
+    container_name: xai-sentry-node
+    environment:
+      - NOTIFICATION_WEBHOOK_OPTIONAL=
+      - OPERATOR_KEY_VARIABLE=keygoherey
+    deploy:
+      resources:
+        limits:
+## Cap limits of CPU and max ram usage to sane limits slightly above xai spec for 100 nodes
+          cpus: '3'
+          memory: 5G

@@ -1,0 +1,2 @@
+# Every ten min, run the update script and write the output to a log file
+*/10 * * * * sentry /home/sentry/check_updates.sh >> /home/sentry/check_updates.log 2>&1
