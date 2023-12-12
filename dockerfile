@@ -17,8 +17,8 @@ COPY --chown=$USER:$USER notify_webhook.sh $HOME/notify_webhook.sh
 COPY --chown=$USER:$USER check_updates.sh $HOME/check_updates.sh
 COPY --chown=$USER:$USER sentry_wrapper.sh $HOME/sentry_wrapper.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY  sentry_cron /etc/cron.d/sentry_cron
-
+COPY sentry_cron /etc/cron.d/sentry_cron
+COPY entrypoint.sh /entrypoint.sh
 
 # Apply cron job
 RUN chmod 0644 /etc/cron.d/sentry_cron \
@@ -34,5 +34,7 @@ RUN $HOME/check_updates.sh
 
 USER root
 # Set up supervisor
-ENTRYPOINT ["/usr/bin/supervisord","-c","/etc/supervisor/conf.d/supervisord.conf"]
+
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
