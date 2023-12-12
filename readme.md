@@ -14,3 +14,15 @@ otherwise it does try to auto update and run on it's own
 
 docker-compose.yml can be yeeted of the key after launching, or can set it up by running
 ```docker run --name xai-sentry-node --env OPERATOR_KEY_VARIABLE=keygohere  --env NOTIFICATION_WEBHOOK_OPTIONAL= --restart unless-stopped --cpus 3 --memory 5G solaaa/xai-docker-unofficial:latest```
+
+To view the log file, first find the container ID by running: 
+
+```
+docker ps
+```
+
+Then, use the container ID to execute the `cat` command:
+
+```
+docker exec <container_id> cat /var/log/sentry-node-cli.log
+```
