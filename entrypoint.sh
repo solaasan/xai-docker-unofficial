@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set file permissions with delay after supervisord is up in a very silly way ^_^
+# delayed to give enough time for sentry to assume control
 (sleep 3s && chown sentry /var/run/supervisor.sock && chmod 660 /var/run/supervisor.sock) &
 
 # Run supervisord
