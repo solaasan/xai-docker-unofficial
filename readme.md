@@ -1,6 +1,6 @@
 ultra tldr:
 adjust pk for operator in docker-compose
-then in the same folder run ```docker-compose up --build -d```
+then in the same folder run ```docker-compose up -d``` or the needful build instructions should you prefer buid it yourself adding the needful ```--build``` and adjusting comments in docker-compose.yml
 
 default config will have it auto reset, consdier setting a discord webhook for notifications on failures
 in most cases it 'should' pick back bup

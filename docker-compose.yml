@@ -12,6 +12,7 @@ services:
     deploy:
       resources:
         limits:
-## Cap limits of CPU and max ram usage to sane limits slightly above xai spec for 100 nodes
+          ## Cap limits of CPU and max ram usage to sane limits slightly above xai spec for 100 nodes
           cpus: '3'
           memory: 5G
+    restart: unless-stopped
