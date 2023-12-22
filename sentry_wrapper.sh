@@ -17,9 +17,24 @@ expect -re .+
 send "boot-operator\r"
 expect -re .+
 
-# Send the API key from the environment variable
+
+
+# Send the PK from the environment variable
 send $op_key
 send "\r"
+
+# Wait for the question about the whitelist for the operator runtime
+expect {
+   -nocase "? Do you want to use a whitelist for the operator runtime? (y/N)" {
+      send "n\r"
+   }
+   timeout {
+      send "exit\r"
+      after 2000
+      exec /bin/bash -c "/home/sentry/check_update.sh"
+   }
+}
+
 
 expect {
    -nocase "error" {
